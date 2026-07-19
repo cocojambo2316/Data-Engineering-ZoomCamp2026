@@ -1,0 +1,13 @@
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.env
+*.pem
+*.key
+pgdata/
+logs/
+*.csv
+*.parquet
+*.json
+data/
