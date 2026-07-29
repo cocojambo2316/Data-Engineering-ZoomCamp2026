@@ -38,3 +38,15 @@ docker run -it --rm `
   -v ny_taxi_postgres_data:/var/lib/postgresql `
   -p 5432:5432 `
   postgres:18
+
+# Add Jupyter as a dev dependency via uv
+uv add --dev jupyter
+
+# Launch Jupyter Notebook
+uv run jupyter notebook
+
+# Install SQLAlchemy and psycopg driver for PostgreSQL connection
+uv add sqlalchemy "psycopg[binary,pool]"
+
+# Connect to PostgreSQL using pgcli within the uv virtual environment context
+uv run pgcli -h localhost -p 5432 -u root -d ny_taxi
