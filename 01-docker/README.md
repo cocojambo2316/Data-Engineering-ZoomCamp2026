@@ -49,4 +49,16 @@ uv run jupyter notebook
 uv add sqlalchemy "psycopg[binary,pool]"
 
 # Connect to PostgreSQL using pgcli within the uv virtual environment context
-uv run pgcli -h localhost -p 5432 -u root -d ny_taxi
+
+
+#pipeline run data ingestion
+uv run python ingest_data.py `
+  --pg_user=root `
+  --pg_pass=root `
+  --pg_host=localhost `
+  --pg_port=5432 `
+  --pg_db=ny_taxi `
+  --target_table=yellow_taxi_trips_2021_1 `
+  --year=2021 `
+  --month=1 `
+  --chunksize=100000
